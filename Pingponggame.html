@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping-Pong</title>
+    <link rel="shortcut icon" type="x-icon" href="/Images/icons8-ping-pong-48.png">
+    <link rel="stylesheet" href="Pingponggame.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Julee&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>🏓PING-PONG🏓</h1>
+    <h2>player1</h2>
+    <h2 id="player2">player2</h2>
+    <canvas id="myCanvas" width="700" height="360"></canvas>
+    <div id="score">
+        <span>0:0</span>
+    </div>
+    <button id="resetButton">Reset</button>
+    <button id="pauseButton">Pause</button>
+    <button id="startButton">Start</button>
+    <button id="helpButton">Help</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3>Instructions</h3>
+          <hr>
+          <p>-> Click on Start to start the Game.</p>
+          <p>-> Click on Pause to pause the Game.</p>
+          <p>-> Click on Reset to reset the Game.</p>
+          <p>-> Use W,S to move player1</p>
+          <p>-> Use UpArrow,DownArrow to move player2</p>
+          <p>-> Click on X to close the window.</p>
+        </div>
+    </div>
+    <script src="Pingponggame.js"></script>
+</body>
+</html>
