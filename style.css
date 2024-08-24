@@ -16,6 +16,7 @@ html, body {
 button {
   display: flex;
   width: 203px;
+  height: 57px;
   padding: 9px 39px;
   justify-content: center;
   align-items: center;
@@ -71,10 +72,13 @@ nav .nav-elements {
   margin-top: 32px;
   font-size: 24px;
 }
-nav .nav-elements ul {
-  list-style: none;
+nav .nav-elements .game-link {
+  font-weight: 600;
+  visibility: hidden;
+}
+nav .nav-elements .nav-sub-elements {
   display: flex;
-  gap: 150px;
+  gap: 82px;
 }
 nav .nav-elements a:hover {
   cursor: pointer;
@@ -91,7 +95,13 @@ nav .nav-elements a:hover {
   align-items: center;
   gap: 40px;
 }
+.main-home .intro-text {
+  position: relative;
+  top: 0;
+  transition: all 0.4s ease-in-out;
+}
 .main-home .intro-text h1 {
+  transition: all 0.4s ease-in-out;
   font-size: 96px;
   font-weight: 600;
 }
