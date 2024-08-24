@@ -6,36 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ping-Pong</title>
     <link rel="shortcut icon" type="x-icon" href="icons8-ping-pong-48.png">
-    <link rel="stylesheet" href="Pingponggame.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Julee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>🏓PING-PONG🏓</h1>
-    <h2>player1</h2>
-    <h2 id="player2">player2</h2>
-    <canvas id="myCanvas" width="700" height="360"></canvas>
-    <div id="score">
-        <span>0:0</span>
+    <div class="circle top-left"></div>
+    <div class="circle bottom-right"></div>
+    <div class="responsive-content">
+        <div><h1>Uh-Oh!</h1></div>
+        <div><p>This game isn't feeling up to the challenge on a small screen. It needs a bit more space to shine—try it out on your laptop or PC for the full experience!</p></div>
     </div>
-    <button id="resetButton">Reset</button>
-    <button id="pauseButton">Pause</button>
-    <button id="startButton">Start</button>
-    <button id="helpButton">Help</button>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h3>Instructions</h3>
-          <hr>
-          <p>-> Click on Start to start the Game.</p>
-          <p>-> Click on Pause to pause the Game.</p>
-          <p>-> Click on Reset to reset the Game.</p>
-          <p>-> Use W,S to move player1</p>
-          <p>-> Use UpArrow,DownArrow to move player2</p>
-          <p>-> Click on X to close the window.</p>
+    <div class="main-content"><nav>
+        <div class="nav-elements">
+            <a>Tharun theja Boyalla</a>
+            <ul>
+                <li><a>Work</a></li>
+                <li><a>Contact</a></li>
+            </ul>
         </div>
-    </div>
-    <script src="Pingponggame.js"></script>
+    </nav>
+    <div class="main-home">
+        <div class="intro-text"><h1>Ping Pong Game</h1></div>
+        <div><button>
+            Start
+        </button></div>
+    </div></div>
+    
+    
 </body>
 </html>
