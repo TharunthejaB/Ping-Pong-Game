@@ -57,6 +57,68 @@ gap: 10px;
 }
 .responsive-content{
     display: none;
+    padding: 0 20px;
+    .hamburger-menu{
+        height: 100vh;
+        width: 50%;
+        position: absolute;
+        background-color: white;
+        right: -500px;
+        transition: all 0.5s ease-in-out;
+        border-radius: 15px 0 0 15px;
+        background: rgba( 255, 255, 255, 0.2 );
+        backdrop-filter: blur( 4px );
+        -webkit-backdrop-filter: blur( 4px );
+        padding: 80px 50px;
+        .hamburger-elements{
+            display: flex;
+            flex-direction: column;
+            height: 25%;
+            justify-content: space-around;
+            a{
+                font-size: 24px;
+            }
+        }
+    }
+    .responsive-nav{
+        margin-top: 32px;
+        width: calc(100% - 40px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a{
+            font-size: 16px; 
+            font-weight: 300;
+        }
+        .hamburger-icon{
+            display: flex;
+            width: 30px;
+            flex-direction: column;
+            gap: 4px;
+            border-radius: 3px;
+            .hamburger-line{
+                border: 1px solid white;
+            }
+        }
+    }
+    .responsive-home{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 40px;
+        h1{
+            font-size: 96px;
+        }
+        p{
+            font-size: 24px;
+            text-align: justify;
+        }
+        a{
+            font-size: 16px;
+        }
+    }
 }
 nav{
     width: calc(100% - 120px);
@@ -68,7 +130,8 @@ nav{
         font-size: 24px;
         .game-link{
             font-weight: 600;
-            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
         .nav-sub-elements{
             display: flex;
@@ -88,12 +151,16 @@ nav{
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    #start{
+        position: relative;
+        bottom: 0;
+    }
     .intro-text{
         position: relative;
         top: 0;
-        transition: all 0.4s ease-in-out;
+        transition: all 0.6s ease-in-out;
         h1{
-            transition: all 0.4s ease-in-out;
+            transition: all 0.6s ease-in-out;
             font-size: 96px;
             font-weight: 600;
         }
@@ -103,19 +170,6 @@ nav{
 @media (max-width: 768px){
     .responsive-content{
         display: block;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 40px;
-        h1{
-            font-size: 96px;
-        }
-        p{
-            font-size: 24px;
-            text-align: justify;
-        }
     }
     .main-content{
         display: none;
@@ -134,4 +188,5 @@ nav{
             font-size: 72px;
         }
     }
+   
 }
