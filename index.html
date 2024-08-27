@@ -34,21 +34,40 @@
         </div>
         
     </div>
-
-    <div class="main-content"><nav>
-        <div class="nav-elements">
-            <a>Tharun theja Boyalla</a>
-            <a class="game-link">Ping Pong Game</a>
-            <div class="nav-sub-elements"><a>Work</a>
-            <a>Contact</a></div>
+    <!--Main Content -->
+    <div class="main-content">
+        <!-- Nav bar -->
+        <nav>
+            <div class="nav-elements">
+                <a>Tharun theja Boyalla</a>
+                <a class="game-link" onclick="revStartFunction()">Ping Pong Game</a>
+                <div class="nav-sub-elements"><a>Work</a>
+                <a>Contact</a></div>
+            </div>
+        </nav>
+        <!-- Intro text -->
+        <div class="main-home">
+            <div class="intro-text"><h1>Ping Pong Game</h1></div>
+            <div>
+                <button id="start" onclick="startFunction()">Start</button>
+            </div>
         </div>
-    </nav>
-    <div class="main-home">
-        <div class="intro-text"><h1>Ping Pong Game</h1></div>
-        <div><button id="start" onclick="startFunction()">
-            Start
-        </button></div>
-    </div></div>
+        <div class="game-area">
+            <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+            </canvas>
+            <div class="button-icons">
+            </div>
+            <div class="button-group">
+                <div></div>
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+                <button id="reset">Reset</button>
+                <button id="help">Help</button>
+                <button id="quit">Quit</button>
+                <div></div>
+            </div>
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

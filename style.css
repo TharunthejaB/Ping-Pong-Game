@@ -40,6 +40,7 @@ button:hover {
   filter: blur(150px);
   width: 721px; /* Size of the circle */
   height: 721px;
+  transition: all 0.6s ease-in-out;
 }
 
 .top-left {
@@ -56,6 +57,82 @@ button:hover {
 
 .main-content {
   padding: 0 60px;
+  height: 100vh;
+}
+.main-content nav {
+  width: calc(100% - 120px);
+  position: fixed;
+}
+.main-content nav .nav-elements {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  font-size: 24px;
+}
+.main-content nav .nav-elements .game-link {
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.main-content nav .nav-elements .nav-sub-elements {
+  display: flex;
+  gap: 82px;
+}
+.main-content nav .nav-elements a {
+  color: rgba(233, 233, 233, 0.8705882353);
+  transition: all 0.3s ease-in-out;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.main-content nav .nav-elements a:hover {
+  cursor: pointer;
+  color: white;
+}
+.main-content .main-home {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  transition: all 0.6s ease-in-out;
+}
+.main-content .main-home #start {
+  position: relative;
+  bottom: 0;
+}
+.main-content .main-home .intro-text {
+  position: relative;
+  top: 0;
+  transition: all 0.6s ease-in-out;
+}
+.main-content .main-home .intro-text h1 {
+  transition: all 0.6s ease-in-out;
+  font-size: 96px;
+  font-weight: 600;
+}
+.main-content .game-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid red;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.main-content .game-area .button-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.main-content .game-area #quit:hover {
+  background-color: #F26464 !important;
+  border: 3px solid transparent;
+  color: white !important;
 }
 
 .responsive-content {
@@ -143,55 +220,6 @@ button:hover {
 }
 .responsive-content .responsive-home a {
   font-size: 16px;
-}
-
-nav {
-  width: calc(100% - 120px);
-  position: fixed;
-}
-nav .nav-elements {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 32px;
-  font-size: 24px;
-}
-nav .nav-elements .game-link {
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-nav .nav-elements .nav-sub-elements {
-  display: flex;
-  gap: 82px;
-}
-nav .nav-elements a:hover {
-  cursor: pointer;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.main-home {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
-.main-home #start {
-  position: relative;
-  bottom: 0;
-}
-.main-home .intro-text {
-  position: relative;
-  top: 0;
-  transition: all 0.6s ease-in-out;
-}
-.main-home .intro-text h1 {
-  transition: all 0.6s ease-in-out;
-  font-size: 96px;
-  font-weight: 600;
 }
 
 @keyframes lineoneanimation {
