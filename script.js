@@ -4,6 +4,9 @@ const gameLink = document.querySelector(".game-link");
 const hamBurgerMenu = document.querySelector(".hamburger-menu");
 const startButton = document.getElementById("start");
 const hamBurger = document.getElementById("hamburger-icon");
+const menu = document.getElementById('hamburger-icon');
+const lines = document.querySelectorAll('.not-active')
+
 
 function startFunction (){
     mainHome.style.top = "-600px";
@@ -23,5 +26,12 @@ function hamburger(){
         hamBurgerMenu.style.right = "0"; 
     }
 }
+
+menu.addEventListener('click', ()=>{
+	menu.classList.toggle('active');
+	lines.forEach((line)=>{
+		line.classList.remove('not-active');
+	})
+})
 
 hamBurger.addEventListener('click',hamburger)

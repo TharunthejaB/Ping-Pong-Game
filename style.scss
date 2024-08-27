@@ -96,10 +96,31 @@ gap: 10px;
             flex-direction: column;
             gap: 4px;
             border-radius: 3px;
-            .hamburger-line{
+            .hamburger-line1{
                 border: 1px solid white;
+                animation: lineoneanimationrev .7s forwards
             }
+            .hamburger-line2{
+                border: 1px solid white;
+                animation: linetwoanimationrev .7s forwards
+            }
+            .hamburger-line3{
+                border: 1px solid white;
+                animation: linethreeanimationrev .7s forwards
+            }
+            .not-active{
+                animation: none !important;
+            }            
         }
+        .active {.hamburger-line1{
+                animation: lineoneanimation .7s forwards
+            }
+            .hamburger-line2{
+                animation: linetwoanimation .7s forwards
+            }
+            .hamburger-line3{
+                animation: linethreeanimation .7s forwards
+            }}
     }
     .responsive-home{
         height: 100vh;
@@ -167,7 +188,85 @@ nav{
     }
 }
 
-@media (max-width: 768px){
+@keyframes lineoneanimation{
+	0%{
+		transform: translateY(0) rotate(0);
+	}
+	50%{
+	
+		transform: translateY(8px);
+	}
+	100%{
+		transform: translateY(8px) rotate(45deg);
+	}
+}
+@keyframes linetwoanimation{
+	0%{
+		transform: scale(1);
+		opacity: 1;
+	}
+	50%{
+		transform: scale(0.5);
+		opacity: 0.5;
+	}
+	100%{
+		transform: scale(0);
+		opacity: 0;
+	}
+}
+@keyframes linethreeanimation{
+	0%{
+		transform: translateY(0) rotate(0);
+	}
+	50%{
+	
+		transform: translateY(-4px);
+	}
+	100%{
+		transform: translateY(-4px) rotate(-45deg);
+	}
+}
+
+@keyframes lineoneanimationrev{
+	1000%{
+		transform: translateY(0) rotate(0);
+	}
+	50%{
+	
+		transform: translateY(8px);
+	}
+	0%{
+		transform: translateY(8px) rotate(45deg);
+	}
+}
+@keyframes linetwoanimationrev{
+	1000%{
+		transform: scale(1);
+		opacity: 1;
+	}
+	50%{
+		transform: scale(0.5);
+		opacity: 0.5;
+	}
+	0%{
+		transform: scale(0);
+		opacity: 0;
+	}
+}
+@keyframes linethreeanimationrev{
+	100%{
+		transform: translateY(0) rotate(0);
+	}
+	50%{
+	
+		transform: translateY(-4px);
+	}
+	0%{
+		transform: translateY(-4px) rotate(-45deg);
+	}
+}
+
+@media (max-width: 932px){
     .responsive-content{
         display: block;
     }

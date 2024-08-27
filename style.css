@@ -102,8 +102,29 @@ button:hover {
   gap: 4px;
   border-radius: 3px;
 }
-.responsive-content .responsive-nav .hamburger-icon .hamburger-line {
+.responsive-content .responsive-nav .hamburger-icon .hamburger-line1 {
   border: 1px solid white;
+  animation: lineoneanimationrev 0.7s forwards;
+}
+.responsive-content .responsive-nav .hamburger-icon .hamburger-line2 {
+  border: 1px solid white;
+  animation: linetwoanimationrev 0.7s forwards;
+}
+.responsive-content .responsive-nav .hamburger-icon .hamburger-line3 {
+  border: 1px solid white;
+  animation: linethreeanimationrev 0.7s forwards;
+}
+.responsive-content .responsive-nav .hamburger-icon .not-active {
+  animation: none !important;
+}
+.responsive-content .responsive-nav .active .hamburger-line1 {
+  animation: lineoneanimation 0.7s forwards;
+}
+.responsive-content .responsive-nav .active .hamburger-line2 {
+  animation: linetwoanimation 0.7s forwards;
+}
+.responsive-content .responsive-nav .active .hamburger-line3 {
+  animation: linethreeanimation 0.7s forwards;
 }
 .responsive-content .responsive-home {
   height: 100vh;
@@ -173,7 +194,79 @@ nav .nav-elements a:hover {
   font-weight: 600;
 }
 
-@media (max-width: 768px) {
+@keyframes lineoneanimation {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(8px) rotate(45deg);
+  }
+}
+@keyframes linetwoanimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes linethreeanimation {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+}
+@keyframes lineoneanimationrev {
+  1000% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+  0% {
+    transform: translateY(8px) rotate(45deg);
+  }
+}
+@keyframes linetwoanimationrev {
+  1000% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes linethreeanimationrev {
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  0% {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+}
+@media (max-width: 932px) {
   .responsive-content {
     display: block;
   }
