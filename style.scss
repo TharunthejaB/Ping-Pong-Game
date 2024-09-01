@@ -125,12 +125,12 @@ button{
             width: 100%;
             justify-content: space-evenly;
             align-items: center;
-            gap: 35px;
-            .sounds{
-                width: 100%;
-            }
+            .sounds,
             .music{
-                width: 100%;
+                width: fit-content;
+                img{
+                    height: 57px;
+                }
             }
         }
         #quit:hover{
