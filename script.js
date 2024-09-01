@@ -8,6 +8,7 @@ const hamBurger = document.getElementById("hamburger-icon");
 const menu = document.getElementById('hamburger-icon');
 const lines = document.querySelectorAll('.not-active');
 const gameArea = document.querySelector(".game-area");
+const musicButton = document.querySelector(".music img");
 
 
 function startFunction (){
