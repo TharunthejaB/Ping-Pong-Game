@@ -185,6 +185,7 @@ button:hover {
   display: none;
   padding: 0 20px;
   height: 100vh;
+  z-index: 1;
 }
 .responsive-content .hamburger-menu {
   height: 100vh;
@@ -214,6 +215,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   position: fixed;
+  width: calc(100% - 40px);
 }
 .responsive-content .responsive-nav a {
   font-size: 16px;
