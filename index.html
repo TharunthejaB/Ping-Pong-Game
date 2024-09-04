@@ -59,18 +59,18 @@
                 </div>
                 <div class="player-details-modal-content2">
                     <div class="input-fields">
-                        <div class="player-input"><input type="text" class="player1-input" placeholder="Player 1"><p class="warning-message">Please enter the player name</p></div>
+                        <div class="player-input"><input type="text" class="player1-input" id="player1" placeholder="Player 1"><p class="warning-message" id="warning1">Please enter the player name</p></div>
                         
                         <label for="color">Choose a color:</label>
                         <input type="color" id="color1" name="color" class="color-picker">
                     </div>
-                    <div class="input-fields"><div class="player-input"><input type="text" class="player2-input" placeholder="Player 2"><p class="warning-message">Please enter the player name</p></div>
+                    <div class="input-fields"><div class="player-input"><input type="text" class="player2-input" id="player2" placeholder="Player 2"><p class="warning-message" id="warning2">Please enter the player name</p></div>
                         <label for="color">Choose a color:</label>
                         <input type="color" id="color2" name="color" class="color-picker">
                     </div>
                 </div>
                 <div class="player-details-modal-content3">
-                    <button id="submit">Submit</button>
+                    <button id="submit" onclick="submitButton()">Submit</button>
                 </div>
             </div>
             <div class="canvas-container">
@@ -92,11 +92,11 @@
             </div>
             <div class="button-group">
                 <div class="music"><img src="./volume-high-solid.svg"></div>
-                <div class="button-icons"><img src="./volume-high-solid.svg"><button id="play">Play</button></div>
-                <div class="button-icons"><img src="./volume-high-solid.svg"><button id="pause">Pause</button></div>
-                <div class="button-icons"><img src="./volume-high-solid.svg"><button id="reset">Reset</button></div>
-                <div class="button-icons"><img src="./volume-high-solid.svg"><button id="help">Help</button></div>
-                <div class="button-icons"><img src="./volume-high-solid.svg"><button id="quit">Quit</button></div>
+                <div class="button-icons"><img src="./volume-high-solid.svg"><button class="game-buttons" id="play">Play</button></div>
+                <div class="button-icons"><img src="./volume-high-solid.svg"><button class="game-buttons" id="pause">Pause</button></div>
+                <div class="button-icons"><img src="./volume-high-solid.svg"><button class="game-buttons" id="reset">Reset</button></div>
+                <div class="button-icons"><img src="./volume-high-solid.svg"><button class="game-buttons" id="help">Help</button></div>
+                <div class="button-icons"><img src="./volume-high-solid.svg"><button class="game-buttons" id="quit">Quit</button></div>
                 <div class="sounds"><img src="./volume-high-solid.svg"></div>
             </div>
         </div>

@@ -10,6 +10,34 @@ const lines = document.querySelectorAll('.not-active');
 const gameArea = document.querySelector(".game-area");
 const musicButton = document.querySelector(".music img");
 const playerDetailsModal = document.querySelector(".player-details-modal");
+const player1Input = document.querySelector("#player1");
+const player2Input = document.querySelector("#player2");
+const player1Name = document.querySelector(".player1-name p");
+const player2Name = document.querySelector(".player2-name p");
+const warningMessage1 = document.querySelector("#warning1");
+const warningMessage2 = document.querySelector("#warning2");
+const color1= document.querySelector("#color1");
+const color2= document.querySelector("#color2");
+var paddle1Color = '#4D94AA';
+var paddle2Color = '#7451BF';
+var c = document.getElementById('myCanvas');
+var ctx = c.getContext('2d');
+var container = document.querySelector('.canvas-container');
+
+c.width = container.clientWidth;
+    c.height = container.clientHeight;
+let canvasWidth = c.width;
+let canvasHeight = c.height;
+let paddle1 = {
+    x : 20,
+    y : 20,
+}
+let paddle2 = {
+    x : canvasWidth - 60,
+    y : canvasHeight - 210,
+};
+    
+   
 
 // Start button function 
 function startFunction (){
@@ -26,7 +54,6 @@ function startFunction (){
     setTimeout(()=>{
         playerDetailsModal.style.opacity= 1;
         playerDetailsModal.style.visibility= 'visible';
-        gameArea.style.backdropFilter = "blur(20px)";
     }, 1400)
 }
 // Start button reverse function
@@ -61,58 +88,80 @@ menu.addEventListener('click', ()=>{
 
 hamBurger.addEventListener('click',hamburger)
 
-
-
-// Canvas code
-document.addEventListener('DOMContentLoaded', function() {
-    var c = document.getElementById('myCanvas');
-    var ctx = c.getContext('2d');
-    c.style.background = 'rgba(255, 255, 255, 0.12)';
-    c.style.backdropFilter = 'blur(18.899999618530273px)';
-    c.style.borderRadius = '30px';
-    c.style.border = "1px solid rgba(255, 255, 255, 0.10)"
-    var container = document.querySelector('.canvas-container');
-    c.width = container.clientWidth;
-    c.height = container.clientHeight;
-    let canvasWidth = c.width;
-    let canvasHeight = c.height;
-    let paddle1 = {
-        x : 20,
-        y : 20,
+//PLayerDetails Modal
+function submitButton(){
+    if(player1Input.value.trim()=="" && player2Input.value.trim()==""){
+        warningMessage1.style.display="block";
+        warningMessage2.style.display="block";
     }
-    let paddle2 = {
-        x : canvasWidth - 60,
-        y : canvasHeight - 210,
-    };
+    else if(player1Input.value.trim()==""){
+        warningMessage1.style.display="block";
+    }
+    else if(player2Input.value.trim()==""){
+        warningMessage2.style.display="block";
+    }
+    else{
+        player1Name.innerHTML = player1Input.value;
+        player2Name.innerHTML = player2Input.value;
+        paddle1Color = color1.value;
+        paddle2Color = color2.value;
+        drawPaddle();
+        setTimeout(()=>{
+            playerDetailsModal.style.opacity= 0;
+            playerDetailsModal.style.visibility= 'hidden';
+        },500)
+    }
+}
+player1Input.addEventListener('focus', () => {
+    warningMessage1.style.display='none';
+});
+player2Input.addEventListener('focus', () => {
+    warningMessage2.style.display='none';
+});
 
-    // Paddle1
+
+//DrawingPaddle
+function drawPaddle(){// Paddle1
     ctx.beginPath();
-    ctx.fillStyle = '#4D94AA';
+    ctx.fillStyle = paddle1Color;
     ctx.roundRect(paddle1.x,paddle1.y,35,190,[40]);
     ctx.fill();
     // Paddle2
     ctx.beginPath();
-    ctx.fillStyle = '#7451BF';
+    ctx.fillStyle = paddle2Color;
     ctx.roundRect(paddle2.x,paddle2.y,35,190,[40]);
     ctx.fill();
+}
 
-    // Middle line
+//DrawingMiddleLine
+function middleLine(){
     ctx.beginPath();
     ctx.strokeStyle = "white";
     ctx.lineWidth = 5;
     ctx.moveTo(canvasWidth/2,0);
     ctx.lineTo(canvasWidth/2,canvasHeight);
     ctx.stroke();
-
     ctx.beginPath();
     ctx.strokeStyle = "white";
     ctx.arc(canvasWidth/2,canvasHeight/2,60,0,6*Math.PI);
     ctx.stroke();
+}
 
-    //Play ball
+//DrawingPlayBall
+function playBall(){
     ctx.beginPath();
     ctx.arc(canvasWidth/2,canvasHeight/2,20,0,2*Math.PI);
     ctx.fillStyle = "#F26464";
     ctx.fill();
-
+}
+// Canvas code
+    document.addEventListener('DOMContentLoaded', function() {
+   
+    c.style.background = 'rgba(255, 255, 255, 0.12)';
+    c.style.backdropFilter = 'blur(18.899999618530273px)';
+    c.style.borderRadius = '30px';
+    c.style.border = "1px solid rgba(255, 255, 255, 0.10)"
+    drawPaddle(); 
+    middleLine();
+    playBall();
 });
