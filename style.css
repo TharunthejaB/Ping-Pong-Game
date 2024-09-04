@@ -13,6 +13,10 @@ html, body {
   position: relative;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   display: flex;
   width: auto;
@@ -126,24 +130,132 @@ button:hover {
   padding: 80px 0px 40px 0px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  position: relative;
+}
+.main-content .game-area .blur-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+.main-content .game-area .player-details-modal {
+  position: absolute;
+  padding: 32px 32px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.78);
+  -webkit-backdrop-filter: blur(8.1000003815px);
+          backdrop-filter: blur(8.1000003815px);
+  width: 75%;
+  height: 75%;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content, .main-content .game-area .player-details-modal .player-details-modal-content2, .main-content .game-area .player-details-modal .player-details-modal-content3 {
+  z-index: 6;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content p, .main-content .game-area .player-details-modal .player-details-modal-content2 p, .main-content .game-area .player-details-modal .player-details-modal-content3 p {
+  font-size: 32px;
+  font-weight: 600;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input {
+  width: 100%;
+  position: relative;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input, .main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input {
+  background: rgba(0, 0, 0, 0.78);
+  text-align: center;
+  font-size: 32px;
+  width: 100%;
+  height: 64px;
+  border-radius: 25px;
+  border: 3px solid #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input p, .main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input p {
+  font-size: 24px;
+  font-weight: 600;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .warning-message {
+  display: none;
+  position: absolute;
+  font-size: 16px;
+  font-weight: 400;
+  color: #F26464;
+  left: 20px;
+  bottom: -30px;
+}
+.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields #color1, .main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields #color2 {
+  border: none;
+  padding: 0;
+  width: 25%;
+  height: 64px;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 25px;
 }
 .main-content .game-area .canvas-container {
   width: 100%;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
-.main-content .game-area .canvas-container #myCanvas {
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(18.8999996185px);
-          backdrop-filter: blur(18.8999996185px);
+.main-content .game-area .canvas-container .player-details {
+  position: absolute;
   width: 100%;
   height: 100%;
-  max-height: 100%;
-  max-width: 100%;
+  display: flex;
+}
+.main-content .game-area .canvas-container .player-details .player1, .main-content .game-area .canvas-container .player-details .player2 {
+  width: 50%;
+  height: 100%;
+  padding: 32px 140px;
+  z-index: 1;
+}
+.main-content .game-area .canvas-container .player-details .player1 .player1-name, .main-content .game-area .canvas-container .player-details .player1 .player2-name, .main-content .game-area .canvas-container .player-details .player2 .player1-name, .main-content .game-area .canvas-container .player-details .player2 .player2-name {
+  width: 100%;
+  height: 48px;
+  border-radius: 25px;
+  border: 3px solid #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content .game-area .canvas-container .player-details .player1 .player1-name p, .main-content .game-area .canvas-container .player-details .player1 .player2-name p, .main-content .game-area .canvas-container .player-details .player2 .player1-name p, .main-content .game-area .canvas-container .player-details .player2 .player2-name p {
+  font-size: 24px;
+  font-weight: 600;
+}
+.main-content .game-area .canvas-container #myCanvas {
+  top: 0;
+  left: 0;
   display: block;
-  position: relative;
+  position: absolute;
 }
 .main-content .game-area .button-group {
   display: flex;

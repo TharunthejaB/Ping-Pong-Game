@@ -12,6 +12,10 @@ html , body{
     overflow: hidden;
     position: relative;
 }
+a{
+    text-decoration: none;
+}
+
 button{
     display: flex;
     width: auto;
@@ -121,21 +125,130 @@ button{
         padding: 80px 0px 40px 0px;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
+        position: relative;
+        .blur-layer{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(20px);
+        }
+        .player-details-modal{
+            position: absolute;
+            padding: 32px 32px;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(8.100000381469727px);
+            width: 75%;
+            height: 75%;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            visibility: hidden;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            .player-details-modal-content,.player-details-modal-content2,.player-details-modal-content3{
+                z-index: 6;
+                p{
+                    font-size: 32px;
+                    font-weight: 600;
+                }
+            }
+            .player-details-modal-content2{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 80px;
+                    
+                
+                    .input-fields{
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 20px;
+                        align-items: center;
+                        .player-input{
+                            width: 100%;
+                            position: relative;
+                        .player1-input,.player2-input{
+                            background: rgba(0, 0, 0, 0.78);
+                            text-align: center;
+                            font-size: 32px;
+                            width: 100%;
+                            height: 64px;
+                            border-radius: 25px;
+                            border: 3px solid #FFF;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            p{
+                                font-size: 24px;
+                                font-weight: 600;
+                            }
+                        }
+                        .warning-message{
+                            display: none;
+                            position: absolute;
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: #F26464;
+                            left: 20px;
+                            bottom: -30px;
+                        }
+                    }
+                        #color1,#color2{
+                            border: none;
+                            padding: 0;
+                            width: 25%;
+                            height: 64px;
+                            cursor: pointer;
+                            background-color: transparent;
+                            appearance: none; 
+                            border-radius: 25px;
+                        }
+                    }
+            }
+            
+        }
         .canvas-container{
             width: 100%;
             position: relative;
             overflow: hidden;
-            #myCanvas{
-                border-radius: 30px;
-                border: 1px solid rgba(255, 255, 255, 0.10);
-                background: rgba(255, 255, 255, 0.12);
-                backdrop-filter: blur(18.899999618530273px);
+            height: 100%;
+            
+            .player-details{
+                position: absolute;
                 width: 100%;
                 height: 100%;
-                max-height: 100%;
-                max-width: 100%;
+                display: flex;
+                .player1,.player2{
+                    width: 50%;
+                    height: 100%;
+                    padding: 32px 140px;
+                    z-index: 1;
+                    .player1-name,.player2-name{
+                        width: 100%;
+                        height: 48px;
+                        border-radius: 25px;
+                        border: 3px solid #FFF;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        p{
+                            font-size: 24px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+            #myCanvas{
+                top: 0;
+                left: 0;
                 display: block;
-                position: relative;
+                position: absolute;
             }
         }
         .button-group{
