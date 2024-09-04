@@ -177,6 +177,8 @@ button{
 .responsive-content{
     display: none;
     padding: 0 20px;
+    height: 100vh;
+    z-index: 1;
     .hamburger-menu{
         height: 100vh;
         width: 50%;
@@ -201,10 +203,11 @@ button{
     }
     .responsive-nav{
         margin-top: 32px;
-        width: calc(100% - 40px);
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: fixed;
+        width: calc(100%-40px);
         a{
             font-size: 16px; 
             font-weight: 300;
