@@ -1,4 +1,5 @@
 const mainHome = document.querySelector(".main-home");
+const mainContent = document.querySelector(".main-content");
 const mainTextBox = document.querySelector(".intro-text");
 const mainText = document.querySelector(".intro-text h1");
 const gameLink = document.querySelector(".game-link");
@@ -18,6 +19,8 @@ const warningMessage1 = document.querySelector("#warning1");
 const warningMessage2 = document.querySelector("#warning2");
 const color1= document.querySelector("#color1");
 const color2= document.querySelector("#color2");
+const countDown= document.querySelector(".countdown");
+const countDownText= document.querySelector(".countdown p");
 var paddle1Color = '#4D94AA';
 var paddle2Color = '#7451BF';
 var c = document.getElementById('myCanvas');
@@ -54,6 +57,8 @@ function startFunction (){
     setTimeout(()=>{
         playerDetailsModal.style.opacity= 1;
         playerDetailsModal.style.visibility= 'visible';
+        mainContent.style.filter = 'blur(10px)';
+        document.querySelector('.transparent-bg').style.visibility = "visible";
     }, 1400)
 }
 // Start button reverse function
@@ -109,7 +114,8 @@ function submitButton(){
         setTimeout(()=>{
             playerDetailsModal.style.opacity= 0;
             playerDetailsModal.style.visibility= 'hidden';
-        },500)
+            mainContent.style.filter = 'blur(0px)';
+        },300)
     }
 }
 player1Input.addEventListener('focus', () => {
@@ -119,6 +125,29 @@ player2Input.addEventListener('focus', () => {
     warningMessage2.style.display='none';
 });
 
+//PLayButton
+function playButton(){
+    countDown.style.opacity = 1;
+    countDown.style.visibility = 'visible';
+    mainContent.style.filter = 'blur(10px) brightness(0.5)';
+    setTimeout(()=>{
+        let remainingTime = 3;
+            function updateCountdown() {
+                if (remainingTime <= 0) {
+                    countDownText.innerHTML = '0';
+                    clearInterval(intervalId);
+                    mainContent.style.filter = 'blur(0px) brightness(1)';
+                    countDown.style.opacity = 0;
+                    countDown.style.visibility = 'hidden';
+                    return;
+                }
+                countDownText.innerHTML = remainingTime;
+                remainingTime--;
+            }
+            const intervalId = setInterval(updateCountdown, 1000);
+            updateCountdown();
+    },500)
+}
 
 //DrawingPaddle
 function drawPaddle(){// Paddle1

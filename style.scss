@@ -61,9 +61,12 @@ button{
     height: 100vh;
     position: relative;
     z-index: 1;
+    filter: blur(0px);
+    transition: all 0.5s ease-in-out;
     nav{
         width: calc(100% - 120px);
         position: fixed;
+        z-index: 2;
         .nav-elements{
             display: flex;
             justify-content: space-between;
@@ -126,88 +129,6 @@ button{
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
         position: relative;
-
-        .player-details-modal{
-            position: absolute;
-            padding: 32px 32px;
-            border-radius: 30px;
-            background: rgba(0, 0, 0, 0.78);
-            backdrop-filter: blur(8.100000381469727px);
-            width: 75%;
-            height: 75%;
-            z-index: 2;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: space-around;
-            flex-direction: column;
-            align-items: center;
-            visibility: hidden;
-            transition: all 0.5s ease-in-out;
-            opacity: 0;
-            .player-details-modal-content,.player-details-modal-content2,.player-details-modal-content3{
-                z-index: 6;
-                p{
-                    font-size: 32px;
-                    font-weight: 600;
-                }
-            }
-            .player-details-modal-content2{
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 80px;
-                    
-                
-                    .input-fields{
-                        display: flex;
-                        justify-content: space-between;
-                        gap: 20px;
-                        align-items: center;
-                        .player-input{
-                            width: 100%;
-                            position: relative;
-                        .player1-input,.player2-input{
-                            background: rgba(0, 0, 0, 0.78);
-                            text-align: center;
-                            font-size: 32px;
-                            width: 100%;
-                            height: 64px;
-                            border-radius: 25px;
-                            border: 3px solid #FFF;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            p{
-                                font-size: 24px;
-                                font-weight: 600;
-                            }
-                        }
-                        .warning-message{
-                            display: none;
-                            position: absolute;
-                            font-size: 16px;
-                            font-weight: 400;
-                            color: #F26464;
-                            left: 20px;
-                            bottom: -30px;
-                        }
-                    }
-                        #color1,#color2{
-                            border: none;
-                            padding: 0;
-                            width: 25%;
-                            height: 64px;
-                            cursor: pointer;
-                            background-color: transparent;
-                            appearance: none; 
-                            border-radius: 25px;
-                        }
-                    }
-            }
-            
-        }
         .canvas-container{
             width: 100%;
             position: relative;
@@ -224,6 +145,7 @@ button{
                     height: 100%;
                     padding: 32px 140px;
                     z-index: 1;
+                    position: relative;
                     .player1-name,.player2-name{
                         width: 100%;
                         height: 48px;
@@ -236,6 +158,19 @@ button{
                             font-size: 24px;
                             font-weight: 600;
                         }
+                    }
+                    .score-1, .score-2{
+                        font-size: 112px;
+                        color: #d3d3d3;
+                        position: absolute;
+                    }
+                    .score-1{
+                        right: 14%;
+                        top: 40%;
+                    }
+                    .score-2{
+                        left: 14%;
+                        top: 40%;
                     }
                 }
             }
@@ -281,7 +216,87 @@ button{
         }
     }
 }
-
+.player-details-modal{
+    position: absolute;
+    padding: 32px 32px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8.100000381469727px);
+    width: 75%;
+    height: 75%;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    .player-details-modal-content,.player-details-modal-content2,.player-details-modal-content3{
+        z-index: 6;
+        p{
+            font-size: 32px;
+            font-weight: 600;
+        }
+    }
+    .player-details-modal-content2{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+            
+        
+            .input-fields{
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+                align-items: center;
+                .player-input{
+                    width: 100%;
+                    position: relative;
+                .player1-input,.player2-input{
+                    background: rgba(0, 0, 0, 0.78);
+                    text-align: center;
+                    font-size: 32px;
+                    width: 100%;
+                    height: 64px;
+                    border-radius: 25px;
+                    border: 3px solid #FFF;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    p{
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+                }
+                .warning-message{
+                    display: none;
+                    position: absolute;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #F26464;
+                    left: 20px;
+                    bottom: -30px;
+                }
+            }
+                #color1,#color2{
+                    border: none;
+                    padding: 0;
+                    width: 25%;
+                    height: 64px;
+                    cursor: pointer;
+                    background-color: transparent;
+                    appearance: none; 
+                    border-radius: 25px;
+                }
+            }
+    }
+    
+}
 .responsive-content{
     display: none;
     padding: 0 20px;
@@ -371,7 +386,28 @@ button{
         }
     }
 }
-
+.transparent-bg{
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: 2;
+}
+.countdown{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    z-index: 2;
+    p{
+        font-size: 104px;
+        font-weight: 600;
+    }
+}
 
 
 @keyframes lineoneanimation{

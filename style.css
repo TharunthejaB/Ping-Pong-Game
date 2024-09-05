@@ -65,10 +65,13 @@ button:hover {
   height: 100vh;
   position: relative;
   z-index: 1;
+  filter: blur(0px);
+  transition: all 0.5s ease-in-out;
 }
 .main-content nav {
   width: calc(100% - 120px);
   position: fixed;
+  z-index: 2;
 }
 .main-content nav .nav-elements {
   display: flex;
@@ -132,87 +135,6 @@ button:hover {
   transition: opacity 0.5s ease-in-out;
   position: relative;
 }
-.main-content .game-area .player-details-modal {
-  position: absolute;
-  padding: 32px 32px;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.78);
-  -webkit-backdrop-filter: blur(8.1000003815px);
-          backdrop-filter: blur(8.1000003815px);
-  width: 75%;
-  height: 75%;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  align-items: center;
-  visibility: hidden;
-  transition: all 0.5s ease-in-out;
-  opacity: 0;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content, .main-content .game-area .player-details-modal .player-details-modal-content2, .main-content .game-area .player-details-modal .player-details-modal-content3 {
-  z-index: 6;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content p, .main-content .game-area .player-details-modal .player-details-modal-content2 p, .main-content .game-area .player-details-modal .player-details-modal-content3 p {
-  font-size: 32px;
-  font-weight: 600;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: center;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input {
-  width: 100%;
-  position: relative;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input, .main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input {
-  background: rgba(0, 0, 0, 0.78);
-  text-align: center;
-  font-size: 32px;
-  width: 100%;
-  height: 64px;
-  border-radius: 25px;
-  border: 3px solid #FFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input p, .main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input p {
-  font-size: 24px;
-  font-weight: 600;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields .player-input .warning-message {
-  display: none;
-  position: absolute;
-  font-size: 16px;
-  font-weight: 400;
-  color: #F26464;
-  left: 20px;
-  bottom: -30px;
-}
-.main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields #color1, .main-content .game-area .player-details-modal .player-details-modal-content2 .input-fields #color2 {
-  border: none;
-  padding: 0;
-  width: 25%;
-  height: 64px;
-  cursor: pointer;
-  background-color: transparent;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border-radius: 25px;
-}
 .main-content .game-area .canvas-container {
   width: 100%;
   position: relative;
@@ -230,6 +152,7 @@ button:hover {
   height: 100%;
   padding: 32px 140px;
   z-index: 1;
+  position: relative;
 }
 .main-content .game-area .canvas-container .player-details .player1 .player1-name, .main-content .game-area .canvas-container .player-details .player1 .player2-name, .main-content .game-area .canvas-container .player-details .player2 .player1-name, .main-content .game-area .canvas-container .player-details .player2 .player2-name {
   width: 100%;
@@ -243,6 +166,19 @@ button:hover {
 .main-content .game-area .canvas-container .player-details .player1 .player1-name p, .main-content .game-area .canvas-container .player-details .player1 .player2-name p, .main-content .game-area .canvas-container .player-details .player2 .player1-name p, .main-content .game-area .canvas-container .player-details .player2 .player2-name p {
   font-size: 24px;
   font-weight: 600;
+}
+.main-content .game-area .canvas-container .player-details .player1 .score-1, .main-content .game-area .canvas-container .player-details .player1 .score-2, .main-content .game-area .canvas-container .player-details .player2 .score-1, .main-content .game-area .canvas-container .player-details .player2 .score-2 {
+  font-size: 112px;
+  color: #d3d3d3;
+  position: absolute;
+}
+.main-content .game-area .canvas-container .player-details .player1 .score-1, .main-content .game-area .canvas-container .player-details .player2 .score-1 {
+  right: 14%;
+  top: 40%;
+}
+.main-content .game-area .canvas-container .player-details .player1 .score-2, .main-content .game-area .canvas-container .player-details .player2 .score-2 {
+  left: 14%;
+  top: 40%;
 }
 .main-content .game-area .canvas-container #myCanvas {
   top: 0;
@@ -284,6 +220,88 @@ button:hover {
   background-color: #F26464 !important;
   border: 3px solid transparent;
   color: white !important;
+}
+
+.player-details-modal {
+  position: absolute;
+  padding: 32px 32px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.78);
+  -webkit-backdrop-filter: blur(8.1000003815px);
+          backdrop-filter: blur(8.1000003815px);
+  width: 75%;
+  height: 75%;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+.player-details-modal .player-details-modal-content, .player-details-modal .player-details-modal-content2, .player-details-modal .player-details-modal-content3 {
+  z-index: 6;
+}
+.player-details-modal .player-details-modal-content p, .player-details-modal .player-details-modal-content2 p, .player-details-modal .player-details-modal-content3 p {
+  font-size: 32px;
+  font-weight: 600;
+}
+.player-details-modal .player-details-modal-content2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.player-details-modal .player-details-modal-content2 .input-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.player-details-modal .player-details-modal-content2 .input-fields .player-input {
+  width: 100%;
+  position: relative;
+}
+.player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input, .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input {
+  background: rgba(0, 0, 0, 0.78);
+  text-align: center;
+  font-size: 32px;
+  width: 100%;
+  height: 64px;
+  border-radius: 25px;
+  border: 3px solid #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input p, .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input p {
+  font-size: 24px;
+  font-weight: 600;
+}
+.player-details-modal .player-details-modal-content2 .input-fields .player-input .warning-message {
+  display: none;
+  position: absolute;
+  font-size: 16px;
+  font-weight: 400;
+  color: #F26464;
+  left: 20px;
+  bottom: -30px;
+}
+.player-details-modal .player-details-modal-content2 .input-fields #color1, .player-details-modal .player-details-modal-content2 .input-fields #color2 {
+  border: none;
+  padding: 0;
+  width: 25%;
+  height: 64px;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 25px;
 }
 
 .responsive-content {
@@ -374,6 +392,30 @@ button:hover {
 }
 .responsive-content .responsive-home a {
   font-size: 16px;
+}
+
+.transparent-bg {
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  z-index: 2;
+}
+
+.countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+.countdown p {
+  font-size: 104px;
+  font-weight: 600;
 }
 
 @keyframes lineoneanimation {
