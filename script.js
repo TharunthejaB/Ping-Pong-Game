@@ -115,7 +115,8 @@ function submitButton(){
             playerDetailsModal.style.opacity= 0;
             playerDetailsModal.style.visibility= 'hidden';
             mainContent.style.filter = 'blur(0px)';
-        },300)
+            document.querySelector('.transparent-bg').style.visibility = "hidden";
+        },150)
     }
 }
 player1Input.addEventListener('focus', () => {

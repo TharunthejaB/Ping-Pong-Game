@@ -71,7 +71,7 @@ button:hover {
 .main-content nav {
   width: calc(100% - 120px);
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 }
 .main-content nav .nav-elements {
   display: flex;
