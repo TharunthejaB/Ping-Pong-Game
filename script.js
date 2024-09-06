@@ -28,6 +28,9 @@ var ctx = c.getContext('2d');
 var container = document.querySelector('.canvas-container');
 c.width = container.clientWidth;
 c.height = container.clientHeight;
+let pauseStatus = 0;
+let playStatus = 0;
+let resetStatus = 0;
 let canvasWidth = c.width;
 let canvasHeight = c.height;
 let interval;
@@ -71,6 +74,7 @@ function startFunction (){
 // Start button reverse function
 function revStartFunction (){
     gameArea.style.opacity = 0;
+    
     setTimeout(()=>{
         mainHome.style.display = "flex";
         gameLink.style.opacity = 0;
@@ -79,6 +83,9 @@ function revStartFunction (){
         mainTextBox.style.top = "0px";
         mainText.style.fontSize = "96px";
         startButton.style.bottom = "0px";
+        player1Name.innerHTML = "Player 1";
+        player2Name.innerHTML = "Player 2";
+        resetButton();
     },900)
 }
 // Responsive Hamburger menu
@@ -122,7 +129,8 @@ function submitButton(){
         playerDetailsModal.style.visibility= 'hidden';
         mainContent.style.filter = 'blur(0px)';
         document.querySelector('.transparent-bg').style.visibility = "hidden";
-     
+        player1Input.value = "";
+        player2Input.value = "";
     }
 }
 player1Input.addEventListener('focus', () => {
@@ -134,9 +142,12 @@ player2Input.addEventListener('focus', () => {
 
 //PLayButton
 function playButton(){
+    if(playStatus==0){
+        playStatus = 1;
     countDown.style.opacity = 1;
     countDown.style.visibility = 'visible';
     mainContent.style.filter = 'blur(10px) brightness(0.5)';
+    document.querySelector('.transparent-bg').style.visibility = "visible";
     setTimeout(()=>{
         let remainingTime = 3;
             function updateCountdown() {
@@ -146,6 +157,8 @@ function playButton(){
                     mainContent.style.filter = 'blur(0px) brightness(1)';
                     countDown.style.opacity = 0;
                     countDown.style.visibility = 'hidden';
+                    document.querySelector('.transparent-bg').style.visibility = "hidden";
+
                     return;
                 }
                 countDownText.innerHTML = remainingTime;
@@ -157,10 +170,38 @@ function playButton(){
     setTimeout(()=>{
         createBall();
         nextStep();
-    }, 4500)
+    }, 4500)}
+    else if(playStatus == 1 && pauseStatus == 1 || resetStatus == 1){
+        createBall();
+        nextStep();
+        pauseStatus = 0;
+    }
 
 }
+//pauseButton
+function pauseButton(){
+    if(resetStatus==0){
+    ballspeed = 0;
+    x = ball_x;
+    y = ball_y;
+    pauseStatus = 1;
+    clearInterval(interval);
+    drawBall(x,y);
+    }
+}
 
+//ResetButton
+function resetButton(){
+    playStatus = 0;
+    pauseStatus = 0;
+    resetStatus = 1;
+    document.querySelector(".score-1").innerHTML = 0;
+    document.querySelector(".score-2").innerHTML = 0;
+    clearInterval(interval);
+    ctx.clearRect(0,0,canvasWidth,canvasHeight);
+    middleLine();
+    drawPaddle();
+}
 //DrawingPaddle
 function drawPaddle(){// Paddle1
     ctx.beginPath();
