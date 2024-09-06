@@ -143,7 +143,8 @@ player2Input.addEventListener('focus', () => {
 //PLayButton
 function playButton(){
     if(playStatus==0){
-        playStatus = 1;
+    playStatus = 1;
+    resetStatus = 0;
     countDown.style.opacity = 1;
     countDown.style.visibility = 'visible';
     mainContent.style.filter = 'blur(10px) brightness(0.5)';
