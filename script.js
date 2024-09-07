@@ -1,6 +1,7 @@
 const mainHome = document.querySelector(".main-home");
 const mainContent = document.querySelector(".main-content");
 const mainTextBox = document.querySelector(".intro-text");
+let audio = new Audio("./bg.mp3");
 const mainText = document.querySelector(".intro-text h1");
 const gameLink = document.querySelector(".game-link");
 const hamBurgerMenu = document.querySelector(".hamburger-menu");
@@ -54,11 +55,15 @@ let paddleDown1;
 let paddleUp2;
 let paddleDown2;
 
+//Music
+
+
 // Start button function 
 function startFunction (){
     mainTextBox.style.top = "-600px";
     mainText.style.fontSize = "24px";
     startButton.style.bottom = "-800px"
+    audio.play();
     setTimeout(()=>{
         mainHome.style.display = "none";
         gameLink.style.opacity = 1;
