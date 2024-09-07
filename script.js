@@ -49,8 +49,10 @@ let paddle2 = {
     x : canvasWidth - 60,
     y : canvasHeight - 210,
 };
-    
-   
+let paddleUp1;
+let paddleDown1;
+let paddleUp2;
+let paddleDown2;
 
 // Start button function 
 function startFunction (){
@@ -85,7 +87,8 @@ function revStartFunction (){
         startButton.style.bottom = "0px";
         player1Name.innerHTML = "Player 1";
         player2Name.innerHTML = "Player 2";
-        resetButton();
+        clearBoard();
+        middleLine();
     },900)
 }
 // Responsive Hamburger menu
@@ -177,7 +180,7 @@ function playButton(){
         nextStep();
         pauseStatus = 0;
     }
-
+    window.addEventListener("keydown",changeDirection);
 }
 //pauseButton
 function pauseButton(){
@@ -196,10 +199,20 @@ function resetButton(){
     playStatus = 0;
     pauseStatus = 0;
     resetStatus = 1;
+    player1score = 0;
+    player2score = 0;
     document.querySelector(".score-1").innerHTML = 0;
     document.querySelector(".score-2").innerHTML = 0;
     clearInterval(interval);
     ctx.clearRect(0,0,canvasWidth,canvasHeight);
+    paddle1 = {
+        x : 20,
+        y : 20,
+    }
+    paddle2 = {
+        x : canvasWidth - 60,
+        y : canvasHeight - 210,
+    };
     middleLine();
     drawPaddle();
 }
@@ -232,7 +245,7 @@ function middleLine(){
 
 //DrawingPlayBall
 function createBall(){
-    ballspeed = 2.25;
+    ballspeed = 3;
     if(Math.round(Math.random()) == 1){
         ballxdirection = 1;
     }
@@ -278,18 +291,18 @@ function collision(){
         createBall();
         return;
     }
-    // if(ball_x <= (paddle1.x+35)){
-    //     if(ball_y > paddle1.y && ball_y < paddle1.y+90){
-    //         ball_x = (paddle1.x+35);
-    //         ballxdirection *= -1;
-    //     }
-    // }
-    // if(ball_x > (paddle2.x-10)){
-    //     if(ball_y > paddle2.y && ball_y < paddle2.y+90){
-    //         ball_x = (paddle2.x-10)
-    //         ballxdirection *= -1;
-    //     }
-    // }
+    if(ball_x <= (paddle1.x+45)){
+        if(ball_y > paddle1.y && ball_y < paddle1.y+190){
+            ball_x = (paddle1.x+45);
+            ballxdirection *= -1;
+        }
+    }
+    if(ball_x > (paddle2.x-20)){
+        if(ball_y > paddle2.y && ball_y < paddle2.y+190){
+            ball_x = (paddle2.x-20)
+            ballxdirection *= -1;
+        }
+    }
 }
 function nextStep(){
     interval = setTimeout(()=>{
@@ -304,7 +317,41 @@ function nextStep(){
 }
 
 function clearBoard(){
-    ctx.clearRect(0,0,canvasWidth,canvasWidth);
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+}
+
+
+function changeDirection(event) {
+    const key = event.keyCode;
+    console.log(key); // Debugging line
+    const paddleUp1 = 87; // W key
+    const paddleDown1 = 83; // S key
+    const paddleUp2 = 38; // Up arrow
+    const paddleDown2 = 40; // Down arrow
+
+    switch(key){
+        case paddleUp1:
+            if(paddle1.y > 0){
+                paddle1.y -= 25;
+            }
+            break;
+        case paddleDown1:
+            if(paddle1.y <= canvasHeight - 190){
+                paddle1.y += 25;
+            }
+            break;
+        case paddleUp2:
+            if(paddle2.y > 0){
+                paddle2.y -= 25;
+            }
+            break;
+        case paddleDown2:
+            if(paddle2.y < canvasHeight - 190){
+                paddle2.y += 25;
+            }
+            break;
+    }
+    drawPaddle(); // Make sure the paddles are redrawn
 }
 
 
@@ -317,7 +364,7 @@ function clearBoard(){
     c.style.backdropFilter = 'blur(18.899999618530273px)';
     c.style.borderRadius = '30px';
     c.style.border = "1px solid rgba(255, 255, 255, 0.10)"
-    drawPaddle(); 
     middleLine();
     // playBall();
 });
+
