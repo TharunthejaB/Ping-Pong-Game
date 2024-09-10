@@ -2,6 +2,8 @@ const mainHome = document.querySelector(".main-home");
 const mainContent = document.querySelector(".main-content");
 const mainTextBox = document.querySelector(".intro-text");
 let audio = new Audio("./bg.mp3");
+let effect = new Audio("./HitEffect.mp3");
+let wallHitEffect = new Audio("./wallHitEffect.wav");
 const mainText = document.querySelector(".intro-text h1");
 const gameLink = document.querySelector(".game-link");
 const hamBurgerMenu = document.querySelector(".hamburger-menu");
@@ -22,6 +24,8 @@ const color1= document.querySelector("#color1");
 const color2= document.querySelector("#color2");
 const countDown= document.querySelector(".countdown");
 const countDownText= document.querySelector(".countdown p");
+const sounds= document.querySelector(".sounds");
+const music= document.querySelector(".music");
 var paddle1Color = '#4D94AA';
 var paddle2Color = '#7451BF';
 var c = document.getElementById('myCanvas');
@@ -54,8 +58,8 @@ let paddleUp1;
 let paddleDown1;
 let paddleUp2;
 let paddleDown2;
+wallHitEffect.volume = 0.15;
 
-//Music
 
 
 // Start button function 
@@ -64,6 +68,8 @@ function startFunction (){
     mainText.style.fontSize = "24px";
     startButton.style.bottom = "-800px"
     audio.play();
+    audio.volume = 0.1;
+    audio.loop = true;
     setTimeout(()=>{
         mainHome.style.display = "none";
         gameLink.style.opacity = 1;
@@ -279,9 +285,11 @@ function drawBall(ball_x,ball_y){
 }
 function collision(){
     if(ball_y <= 10){
+        wallHitEffect.play();
         ballydirection *= -1;
     }
     if(ball_y >= canvasHeight-10){
+        wallHitEffect.play();
         ballydirection *= -1;
     }
     if(ball_x < 0){
@@ -298,12 +306,14 @@ function collision(){
     }
     if(ball_x <= (paddle1.x+45)){
         if(ball_y > paddle1.y && ball_y < paddle1.y+190){
+            effect.play();
             ball_x = (paddle1.x+45);
             ballxdirection *= -1;
         }
     }
     if(ball_x > (paddle2.x-20)){
         if(ball_y > paddle2.y && ball_y < paddle2.y+190){
+            effect.play();
             ball_x = (paddle2.x-20)
             ballxdirection *= -1;
         }
@@ -373,3 +383,24 @@ function changeDirection(event) {
     // playBall();
 });
 
+sounds.addEventListener('click', function() {
+    var image = document.getElementById('sounds');
+    // Get the current source and compare it
+    var currentSrc = image.getAttribute('src');
+    
+    if (currentSrc.endsWith('volume-high-solid.svg')) {
+        image.setAttribute('src', './volume-min-svgrepo-com.svg');
+        image.setAttribute('src', './volume-high-solid.svg');
+    }
+});
+music.addEventListener('click', function() {
+    var image = document.getElementById('music');
+    var currentSrc = image.getAttribute('src');
+    if (currentSrc.endsWith('music-note-svgrepo-com.svg')) {
+        image.setAttribute('src', './music-note-svgrepo-com2.svg'); 
+        audio.pause();
+    } else {
+        image.setAttribute('src', './music-note-svgrepo-com.svg'); 
+        audio.play();
+    }
+});
