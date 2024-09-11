@@ -215,7 +215,11 @@ button{
         }
     }
 }
-.player-details-modal{
+
+  
+    
+
+.player-details-modal, .instruction-modal{
     position: absolute;
     padding: 32px 32px;
     border-radius: 30px;
@@ -294,7 +298,37 @@ button{
                 }
             }
     }
+    .close-modal{
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 32px;
+        cursor: pointer;
+        font-weight: 300;
+    }
+
+    p{
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.5;
+    }
     
+    .controls-info-panel{
+        width: 100%;
+        
+    .controls-info{
+        display: flex;
+        justify-content: space-between;
+        div{
+            width: 18%;
+        }
+    }
+}
+}
+.instruction-modal{
+    div{
+        width: 100%;
+    }
 }
 .responsive-content{
     display: none;

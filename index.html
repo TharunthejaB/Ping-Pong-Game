@@ -13,7 +13,22 @@
     <div class="circle top-left"></div>
     <div class="circle bottom-right"></div>
     <div class="transparent-bg"></div>
-    <div class="instruction-modal"></div>
+    <div class="instruction-modal">
+        <span class="close-modal">X</span>
+        <h1>Welcome to the Ping Pong Game! 🏓</h1>
+        <p><b>Objective</b><br>The goal of the game is to score points by hitting the ball past your opponent’s paddle. The first player to reach 20 points wins the match.</p>
+        <div class="controls-info-panel">
+            <p><b>Controls</b></p>
+            <div class="controls-info">
+            <div><p><b>Player 1 (Left Paddle):</b><br>Up: W<br>Down: S</p></div>
+            <div><p><b>Player 2 (Right Paddle):</b><br>Up: Up Arrow<br>Down: Down Arrow</p></div>
+            <div><p><b>Pause/Play:</b><br> Press P to toggle game pause/resume.</p><br></div>
+            <div><p><b>Sound Effects:</b><br> Press N to toggle sound effects.</p><br></div>
+            <div><p><b>Music:</b><br> Press M to toggle background music.</p></div></div>
+        </div>
+        <div><p><b>Gameplay</b><br><b>Ball Speed:</b> Increases slightly with each paddle hit.<br><b>Scoring:</b> Points are scored when the ball passes the opponent's paddle</p></div>
+        <h1>Enjoy the Game! 🏓 </h1>
+    </div>
     <div class="player-details-modal">
         <div class="player-details-modal-content">
             <p> Enter player name</p>
@@ -106,7 +121,7 @@
                 <div class="button-icons"><img src="./Frame 6.svg"><button class="game-buttons" id="play" onclick="playButton()">Play</button></div>
                 <div class="button-icons"><img src="./Frame 7.svg"><button class="game-buttons" id="pause" onclick="pauseButton()">Pause</button></div>
                 <div class="button-icons"><img src="./Frame 8.svg"><button class="game-buttons" id="reset" onclick="resetButton()">Reset</button></div>
-                <div class="button-icons"><img src="./Frame 9.svg"><button class="game-buttons" id="help">Help</button></div>
+                <div class="button-icons"><img src="./Frame 9.svg"><button class="game-buttons" id="help" onclick="helpButton()">Help</button></div>
                 <div class="button-icons"><img src="./_.svg"><button class="game-buttons" id="quit" onclick="revStartFunction()">Quit</button></div>
                 <div class="sounds"><img src="./volume-high-solid.svg" id="sounds"></div>
             </div>

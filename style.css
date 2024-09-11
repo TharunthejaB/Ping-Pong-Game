@@ -222,7 +222,7 @@ button:hover {
   color: white !important;
 }
 
-.player-details-modal {
+.player-details-modal, .instruction-modal {
   position: absolute;
   padding: 32px 32px;
   border-radius: 30px;
@@ -243,30 +243,30 @@ button:hover {
   transition: all 0.5s ease-in-out;
   opacity: 0;
 }
-.player-details-modal .player-details-modal-content, .player-details-modal .player-details-modal-content2, .player-details-modal .player-details-modal-content3 {
+.player-details-modal .player-details-modal-content, .player-details-modal .player-details-modal-content2, .player-details-modal .player-details-modal-content3, .instruction-modal .player-details-modal-content, .instruction-modal .player-details-modal-content2, .instruction-modal .player-details-modal-content3 {
   z-index: 6;
 }
-.player-details-modal .player-details-modal-content p, .player-details-modal .player-details-modal-content2 p, .player-details-modal .player-details-modal-content3 p {
+.player-details-modal .player-details-modal-content p, .player-details-modal .player-details-modal-content2 p, .player-details-modal .player-details-modal-content3 p, .instruction-modal .player-details-modal-content p, .instruction-modal .player-details-modal-content2 p, .instruction-modal .player-details-modal-content3 p {
   font-size: 32px;
   font-weight: 600;
 }
-.player-details-modal .player-details-modal-content2 {
+.player-details-modal .player-details-modal-content2, .instruction-modal .player-details-modal-content2 {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 80px;
 }
-.player-details-modal .player-details-modal-content2 .input-fields {
+.player-details-modal .player-details-modal-content2 .input-fields, .instruction-modal .player-details-modal-content2 .input-fields {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   align-items: center;
 }
-.player-details-modal .player-details-modal-content2 .input-fields .player-input {
+.player-details-modal .player-details-modal-content2 .input-fields .player-input, .instruction-modal .player-details-modal-content2 .input-fields .player-input {
   width: 100%;
   position: relative;
 }
-.player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input, .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input {
+.player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input, .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input, .instruction-modal .player-details-modal-content2 .input-fields .player-input .player1-input, .instruction-modal .player-details-modal-content2 .input-fields .player-input .player2-input {
   background: rgba(0, 0, 0, 0.78);
   text-align: center;
   font-size: 32px;
@@ -278,11 +278,11 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-.player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input p, .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input p {
+.player-details-modal .player-details-modal-content2 .input-fields .player-input .player1-input p, .player-details-modal .player-details-modal-content2 .input-fields .player-input .player2-input p, .instruction-modal .player-details-modal-content2 .input-fields .player-input .player1-input p, .instruction-modal .player-details-modal-content2 .input-fields .player-input .player2-input p {
   font-size: 24px;
   font-weight: 600;
 }
-.player-details-modal .player-details-modal-content2 .input-fields .player-input .warning-message {
+.player-details-modal .player-details-modal-content2 .input-fields .player-input .warning-message, .instruction-modal .player-details-modal-content2 .input-fields .player-input .warning-message {
   display: none;
   position: absolute;
   font-size: 16px;
@@ -291,7 +291,7 @@ button:hover {
   left: 20px;
   bottom: -30px;
 }
-.player-details-modal .player-details-modal-content2 .input-fields #color1, .player-details-modal .player-details-modal-content2 .input-fields #color2 {
+.player-details-modal .player-details-modal-content2 .input-fields #color1, .player-details-modal .player-details-modal-content2 .input-fields #color2, .instruction-modal .player-details-modal-content2 .input-fields #color1, .instruction-modal .player-details-modal-content2 .input-fields #color2 {
   border: none;
   padding: 0;
   width: 25%;
@@ -302,6 +302,33 @@ button:hover {
      -moz-appearance: none;
           appearance: none;
   border-radius: 25px;
+}
+.player-details-modal .close-modal, .instruction-modal .close-modal {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 32px;
+  cursor: pointer;
+  font-weight: 300;
+}
+.player-details-modal p, .instruction-modal p {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.player-details-modal .controls-info-panel, .instruction-modal .controls-info-panel {
+  width: 100%;
+}
+.player-details-modal .controls-info-panel .controls-info, .instruction-modal .controls-info-panel .controls-info {
+  display: flex;
+  justify-content: space-between;
+}
+.player-details-modal .controls-info-panel .controls-info div, .instruction-modal .controls-info-panel .controls-info div {
+  width: 18%;
+}
+
+.instruction-modal div {
+  width: 100%;
 }
 
 .responsive-content {

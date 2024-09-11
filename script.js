@@ -14,6 +14,7 @@ const lines = document.querySelectorAll('.not-active');
 const gameArea = document.querySelector(".game-area");
 const musicButton = document.querySelector(".music img");
 const playerDetailsModal = document.querySelector(".player-details-modal");
+const instructionsModal = document.querySelector(".instruction-modal");
 const player1Input = document.querySelector("#player1");
 const player2Input = document.querySelector("#player2");
 const player1Name = document.querySelector(".player1-name p");
@@ -59,6 +60,7 @@ let paddleDown1;
 let paddleUp2;
 let paddleDown2;
 wallHitEffect.volume = 0.15;
+let status = 0;
 
 
 
@@ -87,7 +89,6 @@ function startFunction (){
 // Start button reverse function
 function revStartFunction (){
     gameArea.style.opacity = 0;
-    
     setTimeout(()=>{
         mainHome.style.display = "flex";
         gameLink.style.opacity = 0;
@@ -98,8 +99,7 @@ function revStartFunction (){
         startButton.style.bottom = "0px";
         player1Name.innerHTML = "Player 1";
         player2Name.innerHTML = "Player 2";
-        clearBoard();
-        middleLine();
+        resetButton();
     },900)
 }
 // Responsive Hamburger menu
@@ -306,16 +306,21 @@ function collision(){
     }
     if(ball_x <= (paddle1.x+45)){
         if(ball_y > paddle1.y && ball_y < paddle1.y+190){
+           
             effect.play();
             ball_x = (paddle1.x+45);
             ballxdirection *= -1;
+            ballspeed += 0.5; 
         }
     }
     if(ball_x > (paddle2.x-20)){
         if(ball_y > paddle2.y && ball_y < paddle2.y+190){
+    
             effect.play();
             ball_x = (paddle2.x-20)
             ballxdirection *= -1;
+            ballspeed += 0.5; 
+
         }
     }
 }
@@ -338,12 +343,13 @@ function clearBoard(){
 
 function changeDirection(event) {
     const key = event.keyCode;
-    console.log(key); // Debugging line
     const paddleUp1 = 87; // W key
     const paddleDown1 = 83; // S key
     const paddleUp2 = 38; // Up arrow
     const paddleDown2 = 40; // Down arrow
-
+    const p = 80;
+    const n = 78;
+    const m = 77;
     switch(key){
         case paddleUp1:
             if(paddle1.y > 0){
@@ -365,13 +371,43 @@ function changeDirection(event) {
                 paddle2.y += 25;
             }
             break;
+        case p:
+            if(status == 0){
+                pauseButton();
+                status = 1;
+            }
+            else{
+                playButton();
+                status = 0;
+            }
+        break;
+        case n:
+            toggleSound();
+        break;
+        case m:
+            toggleMusic();
+        break;
     }
     drawPaddle(); // Make sure the paddles are redrawn
 }
 
 
-
-
+function helpButton(){
+    pauseButton();
+    instructionsModal.style.opacity= 1;
+    instructionsModal.style.visibility= 'visible';
+    mainContent.style.filter = 'blur(10px)';
+    document.querySelector('.transparent-bg').style.visibility = "visible";
+}
+function closeHelpButton(){
+    instructionsModal.style.opacity= 0;
+    instructionsModal.style.visibility= 'hidden';
+    mainContent.style.filter = 'blur(0px)';
+    document.querySelector('.transparent-bg').style.visibility = "hidden";
+}
+document.querySelector(".close-modal").addEventListener('click', ()=>{
+    closeHelpButton();
+})
 // Canvas code
     document.addEventListener('DOMContentLoaded', function() {
    
@@ -382,18 +418,24 @@ function changeDirection(event) {
     middleLine();
     // playBall();
 });
+function toggleSound(){
 
-sounds.addEventListener('click', function() {
-    var image = document.getElementById('sounds');
-    // Get the current source and compare it
-    var currentSrc = image.getAttribute('src');
-    
-    if (currentSrc.endsWith('volume-high-solid.svg')) {
-        image.setAttribute('src', './volume-min-svgrepo-com.svg');
-        image.setAttribute('src', './volume-high-solid.svg');
-    }
-});
-music.addEventListener('click', function() {
+        var image = document.getElementById('sounds');
+
+        var currentSrc = image.getAttribute('src');
+        
+        if (currentSrc.endsWith('volume-high-solid.svg')) {
+            image.setAttribute('src', './volume-min-svgrepo-com.svg');
+            effect.volume = 0;
+            wallHitEffect.volume = 0;
+        }
+        else{
+            image.setAttribute('src', './volume-high-solid.svg');
+            effect.volume = 1;
+            wallHitEffect.volume = 0.15;
+        }
+}
+function toggleMusic(){
     var image = document.getElementById('music');
     var currentSrc = image.getAttribute('src');
     if (currentSrc.endsWith('music-note-svgrepo-com.svg')) {
@@ -403,4 +445,6 @@ music.addEventListener('click', function() {
         image.setAttribute('src', './music-note-svgrepo-com.svg'); 
         audio.play();
     }
-});
+}
+sounds.addEventListener('click', toggleSound);
+music.addEventListener('click', toggleMusic);
